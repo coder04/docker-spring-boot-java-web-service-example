@@ -32,6 +32,13 @@
                 <version>9.4.1207</version>
             </dependency>
     </dependencies>
+  <distributionManagement>
+        <repository>
+            <id>moci-release</id>
+            <name>moci-release</name>
+            <url>https://repository.deere.com</url>
+        </repository>
+    </distributionManagement>
 
     <build>
     	<finalName>docker-java-app-example</finalName>
