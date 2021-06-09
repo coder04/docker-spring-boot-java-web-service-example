@@ -18,13 +18,10 @@ public class ElasticCacheController {
     @Value("${memcache.host}")
     private String memCacheHost;
 
-    @Value("${memcache.port}")
-    private String memcachePort;
-
     @PutMapping(value="/set-memcache")
     public boolean setTextValue() throws IOException {
         boolean isSet = false;
-        MemcachedClient memcachedClient = new MemcachedClient( new DefaultConnectionFactory(), AddrUtil.getAddresses(memCacheHost+":"+memcachePort));
+        MemcachedClient memcachedClient = new MemcachedClient( new DefaultConnectionFactory(), AddrUtil.getAddresses(memCacheHost));
         String key = "1000002";
         String value = "1000002-Test value in Text";
         Integer expires = Integer.parseInt("1000");
@@ -40,7 +37,7 @@ public class ElasticCacheController {
 
     @GetMapping(value="/get-memcache")
     public ResponseEntity<String> getTextValue() throws Exception {
-        MemcachedClient memcachedClient = new MemcachedClient( new DefaultConnectionFactory(),AddrUtil.getAddresses(memCacheHost+":"+memcachePort));
+        MemcachedClient memcachedClient = new MemcachedClient( new DefaultConnectionFactory(),AddrUtil.getAddresses(memCacheHost));
         String key = "1000002";
         Object obj=null;
         try {
