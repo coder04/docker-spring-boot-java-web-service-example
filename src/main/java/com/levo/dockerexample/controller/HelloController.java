@@ -31,10 +31,13 @@ public class HelloController {
 		String key = "1000002";
 		String value = "1000002-Test value in Text";
 		Object obj=null;
+		logger.info("memcache connected with "+memcachedClient.getAvailableServers());
 		Integer expires = Integer.parseInt("1000");
 		try {
+			logger.info("memcache setting data with "+memcachedClient);
 			memcachedClient.set(key, expires, value);
 			obj = memcachedClient.get(key);
+			logger.info("memcache setting data ended with "+memcachedClient);
 			logger.info(obj.toString());
 			isSet = true;
 		}
